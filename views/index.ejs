@@ -11,7 +11,18 @@
 </head>
 
 <body>
-    <h1>Profil szerkesztés</h1>
+    <h1>Parkolóhely nyilvántartó</h1>
+
+    <form action="post">
+        <input type="text" name="rendszam" placeholder="Rendszám" pattern="^[a-zA-Z]{2} [a-zA-Z]{2}-[0-9]{3}$" required>
+        <input type="text" name="tulajdonos" placeholder="Tulajdonos">
+        <input type="number" name="idotartam" placeholder="Időtartam" min="1">
+        <select name="fizetve">
+            <option value="0">Yes</option>
+            <option value="1">No</option>
+        </select>
+        <button>Hozzáadás</button>
+    </form>
 
     <table>
         <thead>
