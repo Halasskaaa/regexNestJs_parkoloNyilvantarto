@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Post, Render } from '@nestjs/common';
 import { AppService } from './app.service.js';
 import { title } from 'process';
+import { NewParkolohelyDto } from './newParkolohely.dto.js';
 
 @Controller()
 export class AppController {
@@ -14,15 +15,16 @@ export class AppController {
       parkolohelyek: await this.appService.getParkolo()
     }
   }
-
-//   @Post('/')
-//   @Render('index')
-//   editProfile(@Body() body: NewParkolohelyDto) {
-//     const userRegex = /^[a-z][a-z\d]*$/;
-//     if (!userRegex.test(body.username)) {
-//       return {
-//         error: "Invalid username"
-//       }
-//     }
-//   }
+  
+  @Post()
+  @Render('index')
+  async newParkolohely(@Body() body: NewParkolohelyDto) {
+    await this.appService.addParkolo(
+      body.rendszam,
+      body.tulajdonos,
+      Number(body.idotartam),
+      body.fizetve = true
+    )
+    return this.getParkolohely();
+  }
 }

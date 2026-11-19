@@ -13,15 +13,15 @@
 <body>
     <h1>Parkolóhely nyilvántartó</h1>
 
-    <form action="post">
+    <form method="post">
         <input type="text" name="rendszam" placeholder="Rendszám" pattern="^[a-zA-Z]{2} [a-zA-Z]{2}-[0-9]{3}$" required>
-        <input type="text" name="tulajdonos" placeholder="Tulajdonos">
-        <input type="number" name="idotartam" placeholder="Időtartam" min="1">
-        <select name="fizetve">
-            <option value="0">Yes</option>
-            <option value="1">No</option>
+        <input type="text" name="tulajdonos" placeholder="Tulajdonos" minlength="6" required>
+        <input type="number" name="idotartam" placeholder="Időtartam" min="1" max="24" step="1" required>
+        <select name="fizetve" required>
+            <option value="0">Nincs❌</option>
+            <option value="1">Van✅</option>
         </select>
-        <button>Hozzáadás</button>
+        <button type="submit">Hozzáadás</button>
     </form>
 
     <table>
@@ -47,7 +47,7 @@
                         <%= parkolo.idotartam %>
                     </td>
                     <td>
-                        <%= parkolo.fizetve %>
+                        <%= parkolo.fizetve ? "✅" : "❌" %>
                     </td>
                 </tr>
 
